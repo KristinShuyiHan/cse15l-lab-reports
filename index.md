@@ -9,7 +9,7 @@ do
   java MarkdownParse $file
 done
 ```
-This commands run `MarkdownParse`implementation through every single test in `test-files`directory. Then, to save the outputs for conparison, I use `the command bash script.sh > results.txt` to save Joe's Mkdp's ourput and `bash script.sh > result1.txt ` to save my Mkdp's output. Then, I type ```diff markdown-parse/result1.txt markdown-parseLab7/markdown-parse/results.txt``` command to compare the difference. The output shows difference in the way that listing my result at  a certain line number, then paced by a ---, and then the output of Commonmark. Then, I type `vim` to oepn the .txt files to locate the test by the given line number. Lastly, to quick search for the line number, I type in `:set number`.
+The commands in the bash script file run `MarkdownParse`implementation through every single test in `test-files`directory. Then, to save the outputs for conparison, I use `the command bash script.sh > results.txt` to save Joe's Mkdp's ourput and `bash script.sh > result1.txt ` to save my Mkdp's output. Then, I type ```diff markdown-parse/result1.txt markdown-parseLab7/markdown-parse/results.txt``` command to compare the difference. The output shows difference in the way that listing my result at  a certain line number, then paced by a ---, and then the output of Commonmark. Then, I type `vim` to oepn the .txt files to locate the test by the given line number. Lastly, to quick search for the line number, I type in `:set number`.
 
 
 
