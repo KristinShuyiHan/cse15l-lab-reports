@@ -32,7 +32,38 @@ My Output
 ```
 **Describe which implementation is correct, or if you think neither is correct, by showing both actual outputs and indicating what the expected output is.For the implementation that’s not correct (or choose one if both are incorrect), describe the _bug (the problem in the code). You don’t have to provide a fix, but you should be specific about what is wrong with the program, and show the code that should be fixed.**
 
-Joe's output is correct here, and mine is not. The problem in my code is 
+Joe's output is correct here, and mine is false. The problem of my code is it picks up eveything between the left bracket and the right bracket next to it, without checking if content between the brackets have space, which makes a link invalid. This problem reveals an important loophoel in my implementation, which is I fail to take newline, special character, blank, and other many elements that might make a link invlaid. Professor Joe's code does take these situations into account. 
+
+Changing my code from line to link might fix this problem 
+
+```
+ public class MarkdownParse {                                                    1
+    public static ArrayList<String> getLinks(String markdown) {                  2
+        ArrayList<String> toReturn = new ArrayList<>();                          3
+        // find the next [, then find the ], then find the (, then take up to.   4
+        // the next )                                                            5
+        int currentIndex = 0;                                                    6
+        while(currentIndex < markdown.length()) {                                7                            
+            int nextOpenBracket = markdown.indexOf("[", currentIndex);           8
+            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);       9
+            int openParen = markdown.indexOf("(", nextCloseBracket);             10
+            int closeParen = markdown.indexOf(")", openParen);                   11
+            if(nextOpenBracket ==-1 || nextCloseBracket==-1){.                   12
+                break;                                                           13
+            }                                                                    14                                                           
+            if (markdown.indexOf("!") != nextOpenBracket-1 && nextCloseBracket +1 == openParen && markdown.indexOf(".png",openParen) !=     15 closeParen-4){                                                                   16
+                toReturn.add(markdown.substring(openParen + 1, closeParen));     17
+                }                                                                18
+                currentIndex = closeParen + 1;                                   19
+                System.out.println();                                            20
+        }                                                                        21
+        return toReturn;                                                         22
+
+    }   
+```
+
+toReturn.add(markdown.substring(openParen + 1, closeParen));
+I should instead save it to a variable like potentialLink, then do further processing upon it to determine if it is in fact a valid link. We need to check for characters like new lines that will cause a potential link to be invalid, as well as any spaces, bearing in mind the above case where a single space is allowed to provide the optional title for a link.
 
 ## Difference 2: 342.md
 
