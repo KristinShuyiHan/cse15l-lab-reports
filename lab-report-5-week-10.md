@@ -32,9 +32,9 @@ My Output
 ```
 **Describe which implementation is correct, or if you think neither is correct, by showing both actual outputs and indicating what the expected output is.For the implementation that’s not correct (or choose one if both are incorrect), describe the _bug (the problem in the code). You don’t have to provide a fix, but you should be specific about what is wrong with the program, and show the code that should be fixed.**
 
-Joe's output is correct here, and mine is false. The problem of my code is it picks up eveything between the left bracket and the right bracket next to it, without checking if content between the brackets have space, which makes a link invalid. This problem reveals an important loophoel in my implementation, which is I fail to take newline, special character, blank, and other many elements that might make a link invlaid. Professor Joe's code does take these situations into account. 
+Joe's output is correct here, and mine is false. The problem of my code is it picks up eveything between the left parenthesis and the right parenthesis next to it, without checking if content between the brackets have space, which makes a link invalid. This problem reveals an important loophoel in my implementation, which is I fail to take newline, special character, blank, and other many elements that might make a link invlaid. Professor Joe's code does take these situations into account. 
 
-Changing my code from line to link might fix this problem 
+Fixing my code at line 17 might fix this problem, because I can store the substring arraylist into another variable, and then write down a series of if statement to check if the content of the variable has any element that might render the link to be invalid. The idea is learned from Joe's implementation where he has a line ' String potentialLink = markdown.substring(openParen + 1, closeParen).trim();' which stores the substring into a temporary variable for further checking instead of directly adding substring to the variable that is going to be returned. To check if a 'potentialLink is valid", I will create a if statement, and adds conditaions into it, like what I did from line 15 to 17. 
 
 ```
  public class MarkdownParse {                                                    1
@@ -51,19 +51,18 @@ Changing my code from line to link might fix this problem
             if(nextOpenBracket ==-1 || nextCloseBracket==-1){.                   12
                 break;                                                           13
             }                                                                    14                                                           
- 15       if (markdown.indexOf("!") != nextOpenBracket-1 && nextCloseBracket +1 == openParen && markdown.indexOf(".png",openParen) !=    closeParen-4){                                                                   16
-                toReturn.add(markdown.substring(openParen + 1, closeParen));     17
-                }                                                                18
-                currentIndex = closeParen + 1;                                   19
-                System.out.println();                                            20
-        }                                                                        21
-        return toReturn;                                                         22
+ 15       if (markdown.indexOf("!") != nextOpenBracket-1 && nextCloseBracket +1 == openParen && markdown.indexOf(".png",openParen) !=    closeParen-4){                                                                  
+                toReturn.add(markdown.substring(openParen + 1, closeParen));     16
+                }                                                                17
+                currentIndex = closeParen + 1;                                   18
+                System.out.println();                                            19
+        }                                                                        20
+        return toReturn;                                                         21
 
     }   
 ```
 
-toReturn.add(markdown.substring(openParen + 1, closeParen));
-I should instead save it to a variable like potentialLink, then do further processing upon it to determine if it is in fact a valid link. We need to check for characters like new lines that will cause a potential link to be invalid, as well as any spaces, bearing in mind the above case where a single space is allowed to provide the optional title for a link.
+
 
 ## Difference 2: 342.md
 
