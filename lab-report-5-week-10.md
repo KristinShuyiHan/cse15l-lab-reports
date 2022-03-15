@@ -30,7 +30,9 @@ Joe's Output
 My Output
 > [/my uri]  test-files/487.md 
 ```
+**Describe which implementation is correct, or if you think neither is correct, by showing both actual outputs and indicating what the expected output is.For the implementation that’s not correct (or choose one if both are incorrect), describe the _bug (the problem in the code). You don’t have to provide a fix, but you should be specific about what is wrong with the program, and show the code that should be fixed.**
 
+Joe's output is correct here, and mine is not. The problem in my code is 
 
 ## Difference 2: 342.md
 
@@ -50,4 +52,6 @@ Joe's Output
 My Output
 > [/foo`] test-files/342.md
 ```
+**Describe which implementation is correct, or if you think neither is correct, by showing both actual outputs and indicating what the expected output is.For the implementation that’s not correct (or choose one if both are incorrect), describe the _bug (the problem in the code). You don’t have to provide a fix, but you should be specific about what is wrong with the program, and show the code that should be fixed.**
 
+Joe's output os correct, and mine is not. 
